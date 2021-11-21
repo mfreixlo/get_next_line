@@ -56,34 +56,30 @@ char	*ft_strdup(char *str)
 	return (new);
 }
 
+int	ft_newline(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 char	*ft_save_buff(char *buffer, int pos)
 {
 	char	*aux;
 
+	if (pos == ft_strlen(buffer))
+	{
+		free(buffer);
+		return (NULL);
+	}
 	aux = ft_strdup(&buffer[pos]);
 	free(buffer);
 	return (aux);
-}
-
-int	ft_read(int fd, char *buffer)
-{
-	int	n;
-
-	n = read(fd, NULL, 0);
-	if (n == -1 || BUFFER_SIZE <= 0 || fd < 0)
-	{
-		free(buffer);
-		return (-1);
-	}
-	else
-	{
-		n = read(fd, buffer, BUFFER_SIZE);
-		if (n == 0 || n > 1024)
-		{
-			free(buffer);
-			return (-1);
-		}
-		buffer[n] = '\0';
-	}
-	return (n);
 }
