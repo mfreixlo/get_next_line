@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfreixo- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 09:38:31 by mfreixo-          #+#    #+#             */
+/*   Updated: 2021/12/12 09:38:32 by mfreixo-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_read(int fd, char *buffer)
@@ -18,7 +30,7 @@ int	ft_read(int fd, char *buffer)
 	else
 	{
 		n = read(fd, buffer, BUFFER_SIZE);
-		if (n == 0 || n > 1024)
+		if (n == 0)
 		{
 			free(buffer);
 			return (-1);
